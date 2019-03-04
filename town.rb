@@ -1,6 +1,6 @@
 class Town
 
-	attr_reader :neighbors
+	attr_reader :name, :max_rubies, :max_fake_rubies, :neighbors
 
 	# Initializes the town with name, max ruby, max fake ruby, seed, and neighbors
 	def initialize n, max_r, max_faker, seed
@@ -10,11 +10,6 @@ class Town
 		@random = Random.new(seed)
 		# Initialize neighbors to be empty list
 		@neighbors = []
-	end
-
-	# Returns the name of the town
-	def name
-		@name
 	end
 
 	# Returns the number of neighboring Towns
@@ -29,7 +24,11 @@ class Town
 
 	# Returns a psuedorandomly determined neighbor
 	def next
-		@neighbors[@random.rand(neighbors.count)]
+		if not @neighbors.count.zero?
+			@neighbors[@random.rand(neighbors.count)]
+		else
+			nil
+		end
 	end
 
 	# Returns a psuedorandomly determined amount of rubies found
@@ -43,3 +42,4 @@ class Town
 		# Add 1 to max_fake_rubies to make maximum inclusive
 		@random.rand(@max_fake_rubies + 1)
 	end
+end
