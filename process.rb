@@ -59,7 +59,30 @@ def init_prospectors num_prospectors
 	@prospectors = Array.new(num_prospectors)
 	i = 1
 	for p in @prospectors
-		p = Prospector::new i, @enumerable_canyon
+		@prospectors[i-1] = Prospector::new i, @enumerable_canyon
+		puts @prospectors[i-1].to_s
 		i += 1
+	end
+end
+
+# Total loop for prospector's journey
+def prospector_journey num_turns
+	for p in @prospectors
+		p.print_start
+
+		while p.visits < num_turns
+			found_anything = p.look_for_rubies
+			p.print_findings
+			if not found_anything #and p.visits <= (num_turns - 1)
+				if p.visits < num_turns - 1
+					p.move
+				elsif p.visits == num_turns - 1
+					break
+				end
+			end
+		end
+
+		p.print_total_findings
+		p.going_home
 	end
 end

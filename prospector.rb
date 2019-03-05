@@ -92,9 +92,9 @@ class Prospector
 
 		print "\t#{@fake_rubies} "
 		if @fake_rubies == 1
-			puts "ruby."
+			puts "fake ruby."
 		else
-			puts "rubies."
+			puts "fake rubies."
 		end
 	end
 
@@ -107,5 +107,9 @@ class Prospector
 		else
 			puts "Going home sad."
 		end
+	end
+
+	def to_s
+		puts "Rubyist ##{@id} is in #{@town.name} with #{@rubies} rubies and #{@fake_rubies} fake rubies after #{@days} days and #{visits} visits."
 	end
 end
