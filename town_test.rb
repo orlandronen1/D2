@@ -4,16 +4,22 @@ require_relative 'town'
 
 class TownTest < Minitest::Test
 
-	# This will create a consistent Town for each test
+	# This will create a consistent pair of Towns for each test
 	def setup
-		@t = Town::new "TownName", 2, 3, 12
-		@t2 = Town::new "NextOne", 0, 0, 3
+		@t = Town::new "The Town", 2, 3, 12
+		@t2 = Town::new "The Other Town", 0, 0, 0
+	end
+
+	# Ensures construction makes a non-nil and valid Town object
+	def test_init_not_nil
+		refute_nil @t
+		refute_nil @t2
+		assert_kind_of Town, @t
 	end
 
 	# UNIT TESTS FOR METHOD num_neighbors()
 	# Equivalence classes:
-	# 0 neighbors  -> returns 0
-	# >0 neighbors -> returns number of neighbors
+	# x neighbors  -> returns x
 
 	# If no neighbors are added, 0 is returned
 	def test_num_neighbors_zero
