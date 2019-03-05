@@ -25,7 +25,7 @@ class Town
 	# Returns a psuedorandomly determined neighbor
 	def next
 		if not @neighbors.count.zero?
-			@neighbors[@random.rand(neighbors.count)]
+			@neighbors[@random.rand(num_neighbors)]
 		else
 			nil
 		end
@@ -41,5 +41,15 @@ class Town
 	def find_fake_rubies
 		# Add 1 to max_fake_rubies to make maximum inclusive
 		@random.rand(@max_fake_rubies + 1)
+	end
+
+	# String representation of the Town
+	def to_s
+		puts "Town Name: #{@name}, max rubies: #{@max_rubies}, max fake rubies: #{@max_fake_rubies}"
+		puts "Neighbors: "
+		for n in neighbors
+			puts "\t#{n.name}"
+		end
+		puts ""
 	end
 end
