@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require_relative 'process'
 
-check_args ARGV
+exit 1 unless check_args ARGV
 
 seed = ARGV[0].to_i
 num_prospectors = ARGV[1].to_i

@@ -37,7 +37,9 @@ class TownTest < Minitest::Test
 	# 0 neighbors  -> returns nil
 	# >0 neighbors -> returns a neighbor
 
-	# If no neighbors, returns nil
+	# If no neighbors, returns nil. Should never happen, as 
+	#  each Town WILL have a neighbor.
+	# EDGE CASE
 	def test_next_no_neighbors
 		assert_nil @t.next
 	end
